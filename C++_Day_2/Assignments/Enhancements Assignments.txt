@@ -1,0 +1,224 @@
+1) using cin and cout, accept name,address,age of a person and print it.
+==>
+#include <iostream>
+#include "First.h"
+using namespace std;
+int val = 20;
+int main()
+{
+	int age;
+	char name[20];
+	char address[30];
+
+	cout << "Enter Your Age" << endl;
+	cin >> age;
+
+	cout << "Enter Your Name" << endl;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.getline(name, 19);
+
+	cout << "Enter Your Address" << endl;
+	cin.getline(address, 29);
+
+	cout << age << name << address;
+
+
+
+}
+
+2) create following structure
+struct book
+{
+	char bid[5];
+	char name[30];
+	int price;
+};
+ask user how many records he wants to create and accordingly allocate memory.
+accept values from user and display.
+( Hint :-  use  "new" operator)
+==>
+#include <iostream>
+#include "First.h"
+using namespace std;
+struct book {
+	char bid[5];
+	char name[30];
+	int price;
+};
+int main()
+{
+
+	int rec;
+
+	cout << "How Many Records Do U want?" << endl;
+	cin >> rec;
+	book* b1 = new book[rec];
+
+	for (int i = 0; i < rec; i++) {
+		cin >> b1[i].bid >> b1[i].name >> b1[i].price;
+	}
+	
+	for (int i = 0; i < rec; i++) {
+		cout << b1[i].bid << b1[i].name << b1[i].price;
+	}
+	
+	delete[] b1;
+
+}
+
+
+
+3) create a structure "Employee" 
+with members 
+	int id
+	char name[20];
+	char desig[20];
+now access it using
+a) array 
+b) DMA
+==>
+#include <iostream>
+#include "First.h"
+using namespace std;
+struct Employee {
+	int id;
+	char name[20];
+	char desig[20];
+};
+int main()
+{
+	int rec;
+
+	cout << "How Many Records Do U want?" << endl;
+	cin >> rec;
+	Employee* emp = new Employee[rec];
+
+	for (int i = 0; i < rec; i++) {
+		cin >> emp[i].id >> emp[i].name >> emp[i].desig;
+	}
+
+	for (int i = 0; i < rec; i++) {
+		cout << emp[i].id << emp[i].name << emp[i].desig;
+	}
+	delete[] emp;
+}
+
+
+4) create a static library in C++ in which,
+write a function which will accept 2 numbers and return the difference between 2 numbers
+write appropriate header file.
+
+write a client code to access this library.
+==>
+
+
+
+5) given
+	void disp(int); function.
+
+now create a function pointer and call this function using function pointer.
+==>
+#include <iostream>
+#include "First.h"
+using namespace std;
+void disp(int a) {
+	cout << a << endl;
+}
+int main()
+{
+	void (*ref)(int) = disp;
+	ref(10);
+}
+
+
+6) write a function to swap 2 given numbers using pointers.
+==>
+#include <iostream>
+#include "First.h"
+using namespace std;
+void swap(int* a,int* b) {
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
+int main()
+{
+	int a = 10;
+	int b = 20;
+
+	cout << a << " " << b << endl;
+
+	swap(&a, &b);
+	cout << a << " " << b;
+}
+
+
+
+7) accept from user how many chracters he has in his name, now allocate a memory accordingly and accept his name. [use new operator]
+==>
+#include <iostream>
+#include "First.h"
+using namespace std;
+
+int main()
+{
+	int count;
+	cout << "Enter how many characters you have in your name" << endl;
+	cin >> count;
+
+	char* name = new char[count + 1];
+	cin.ignore();
+	cin.getline(name, count+1);
+
+	cout << name;
+}
+
+
+8) write a function which can accept minimum 3 characters and maximum 5 characters and display them. ( use "default arguments")
+==>
+#include <iostream>
+#include "First.h"
+using namespace std;
+void func(int a,int b,int c,int d=0,int e=3) {
+	cout << a << " "<<b << " "<<c << " "<<d << " "<<e << " ";
+}
+int main()
+{
+	func(1, 2, 3, 4, 5);
+
+}
+
+9)write a function which takes 3 arguments
+variable, pointer and a reference.(any datatype)
+invoke this function and show how "call by value","call by address" and "call by reference" will work.
+==>
+#include <iostream>
+#include "First.h"
+using namespace std;
+//void disp(int a, int b, int c) {
+//	cout << a << " " << b << " " << c << endl;
+//}
+void disp(int* a,int* b,int* c) {
+	cout << *a << " " << *b << " " << *c << endl;
+}
+void disp(const int& a,const int& b,const int& c) {
+	cout << a << " " << b << " " << c << endl;
+}
+int main()
+{
+	int a = 10;
+	int b = 20;
+	int c = 30;
+
+	disp(10, 20, 30); //call by value
+	disp(&a, &b, &c); //call by address
+	disp(a, b, c); //call by reference 
+}
+
+10)define 3 different structures and initialize their members.
+now write 3 different functions,but with the same name.
+these functions will accept each structure respectively and display their members.
+==>
+
+
+
